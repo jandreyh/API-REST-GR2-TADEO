@@ -110,6 +110,10 @@ func (h *TaskHandler) Update(w http.ResponseWriter, r *http.Request) {
 		respondError(w, http.StatusNotFound, "tarea no encontrada")
 		return
 	}
+	if err != nil {
+		respondError(w, http.StatusInternalServerError, "error al obtener la tarea")
+		return
+	}
 
 	var req models.UpdateTaskRequest
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
@@ -148,8 +152,12 @@ func (h *TaskHandler) Delete(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if err := h.repo.DeleteTask(id, userID); err == models.ErrNotFound {
-		respondError(w, http.StatusNotFound, "tarea no encontrada")
+	if err := h.repo.DeleteTask(id, userID); err != nil {
+		if err == models.ErrNotFound {
+			respondError(w, http.StatusNotFound, "tarea no encontrada")
+			return
+		}
+		respondError(w, http.StatusInternalServerError, "error al eliminar la tarea")
 		return
 	}
 
@@ -168,6 +176,10 @@ func (h *TaskHandler) MarkComplete(w http.ResponseWriter, r *http.Request) {
 	task, err := h.repo.MarkTaskComplete(id, userID)
 	if err == models.ErrNotFound {
 		respondError(w, http.StatusNotFound, "tarea no encontrada")
+		return
+	}
+	if err != nil {
+		respondError(w, http.StatusInternalServerError, "error al marcar la tarea como completa")
 		return
 	}
 
