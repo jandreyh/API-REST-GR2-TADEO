@@ -6,10 +6,10 @@ import (
 	"net/http"
 	"os"
 
-	"todo-api/internal/auth"
-	"todo-api/internal/handlers"
-	"todo-api/internal/middleware"
-	"todo-api/internal/repository"
+	"todo-api/api/auth"
+	"todo-api/api/handlers"
+	"todo-api/api/middleware"
+	"todo-api/api/repository"
 )
 
 func main() {

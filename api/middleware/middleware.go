@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"strings"
 	"time"
-	"todo-api/internal/auth"
+	"todo-api/api/auth"
 )
 
 // contextKey es el tipo para las claves del contexto (evita colisiones)

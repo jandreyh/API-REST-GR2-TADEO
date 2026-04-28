@@ -3,7 +3,7 @@ package repository
 import (
 	"database/sql"
 	"time"
-	"todo-api/internal/models"
+	"todo-api/api/models"
 
 	_ "github.com/mattn/go-sqlite3"
 )

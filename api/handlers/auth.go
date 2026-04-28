@@ -3,9 +3,9 @@ package handlers
 import (
 	"encoding/json"
 	"net/http"
-	"todo-api/internal/auth"
-	"todo-api/internal/models"
-	"todo-api/internal/repository"
+	"todo-api/api/auth"
+	"todo-api/api/models"
+	"todo-api/api/repository"
 
 	"golang.org/x/crypto/bcrypt"
 )

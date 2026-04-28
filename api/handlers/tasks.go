@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"net/http"
 	"strconv"
-	"todo-api/internal/middleware"
-	"todo-api/internal/models"
-	"todo-api/internal/repository"
+	"todo-api/api/middleware"
+	"todo-api/api/models"
+	"todo-api/api/repository"
 )
 
 // TaskHandler maneja todas las operaciones CRUD de tareas
