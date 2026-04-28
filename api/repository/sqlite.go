@@ -5,7 +5,7 @@ import (
 	"time"
 	"todo-api/api/models"
 
-	_ "github.com/mattn/go-sqlite3"
+	_ "modernc.org/sqlite"
 )
 
 // SQLiteRepository implementa el acceso a datos usando SQLite
@@ -15,7 +15,7 @@ type SQLiteRepository struct {
 
 // NewSQLiteRepository crea e inicializa la base de datos
 func NewSQLiteRepository(path string) (*SQLiteRepository, error) {
-	db, err := sql.Open("sqlite3", path)
+	db, err := sql.Open("sqlite", path)
 	if err != nil {
 		return nil, err
 	}
